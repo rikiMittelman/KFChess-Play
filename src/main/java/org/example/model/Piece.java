@@ -1,29 +1,25 @@
 package org.example.model;
 
-public class Piece {
-    private  final char color;
-    private  final char type;
-    private  final PieceRule pieceRule;
+public final class Piece {
+    private final char color; // 'w' או 'b'
+    private final char type;  // 'K', 'Q', 'R', 'B', 'N', 'P'
 
-    public Piece(char color, char type, PieceRule pieceRule) {
+    // קונסטרקטור לבניית הכלי
+    public Piece(char color, char type) {
         this.color = color;
         this.type = type;
-        this.pieceRule = pieceRule;
     }
+
     public char getColor() {
         return color;
     }
+
     public char getType() {
         return type;
     }
-    public boolean isValidMove(Board board, int fromRow, int fromCol, int toRow, int toCol) {
-        if (pieceRule == null) {
-            return false;
-        }
-        return pieceRule.isValidMove(board, fromRow, fromCol, toRow, toCol);
-    }
-    @Override
-    public String toString() {
-        return "" + color + type;
+
+    // מחזיר ייצוג כמו "wP" או "bQ" בשביל ההדפסה והתקשורת
+    public String getRepresentation() {
+        return String.valueOf(color) + type;
     }
 }
